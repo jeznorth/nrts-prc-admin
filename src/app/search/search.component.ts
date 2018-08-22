@@ -98,6 +98,7 @@ export class SearchComponent implements OnInit, OnDestroy {
                         }
                       },
                       error => {
+                        value[0].loaded = true;
                         self.snackBarRef = self.snackBar.open('Error retrieving application ...', null, { duration: 3000 });
                       }
                     );
