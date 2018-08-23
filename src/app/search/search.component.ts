@@ -41,7 +41,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // if we're not logged in, redirect
     if (!this.api.ensureLoggedIn()) {
-      return false;
+      this.router.navigate(['/login']);
     }
     // get search terms from route
     this.route.params
