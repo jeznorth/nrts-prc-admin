@@ -7,6 +7,7 @@ import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
+import { of, forkJoin } from 'rxjs';
 import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/concat';
 import * as moment from 'moment-timezone';
@@ -394,7 +395,7 @@ export class ApplicationAddEditComponent implements OnInit, OnDestroy {
   // this is part 2 of adding an application and all its objects
   // (multi-part due to dependencies)
   private addApplication2(application2: Application) {
-    let observables = Observable.of(null);
+    let observables = of(null);
 
     // add all application documents
     if (this.application.documents) {
@@ -448,7 +449,7 @@ export class ApplicationAddEditComponent implements OnInit, OnDestroy {
   // this is part 3 of adding an application and all its objects
   // (multi-part due to dependencies)
   private addApplication3(application3: Application) {
-    let observables = Observable.of(null);
+    let observables = of(null);
 
     // add all decision documents
     if (this.application.decision && this.application.decision.documents) {
@@ -540,7 +541,7 @@ export class ApplicationAddEditComponent implements OnInit, OnDestroy {
 
     this.isSaving = true;
 
-    let observables = Observable.of(null);
+    let observables = of(null);
 
     // delete staged application and decision documents
     // NB: delete first and add below -- in case the user wants to simultaneously
@@ -620,7 +621,7 @@ export class ApplicationAddEditComponent implements OnInit, OnDestroy {
   // this is part 2 of saving an application and all its objects
   // (multi-part due to dependencies)
   private saveApplication2(application2: Application) {
-    let observables = Observable.of(null);
+    let observables = of(null);
 
     // auto-publish application documents
     if (application2.isPublished && application2.documents) {
@@ -687,7 +688,7 @@ export class ApplicationAddEditComponent implements OnInit, OnDestroy {
   // this is part 3 of saving an application and all its objects
   // (multi-part due to dependencies)
   private saveApplication3(application3: Application) {
-    let observables = Observable.of(null);
+    let observables = of(null);
 
     // auto-publish decision documents
     if (application3.decision && application3.decision.documents) {
