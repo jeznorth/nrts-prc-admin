@@ -1,15 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { trigger, state, style, animate, transition } from '@angular/animations';
 import { ApiService } from 'app/services/api';
 import { JwtUtil } from 'app/jwt-util';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  animations: [
+    trigger('toggleNav', [
+      state('navClosed', style({
+        height: '0',
+      })),
+      state('navOpen', style({
+        height: '*',
+      })),
+      transition('navOpen => navClosed', [
+        animate('0.2s')
+      ]),
+      transition('navClosed => navOpen', [
+        animate('0.2s')
+      ]),
+    ]),
+  ]
 })
 
 export class HeaderComponent {
+  isNavMenuOpen = false;
   welcomeMsg: String;
   private _api: ApiService;
   private jwt: {
@@ -38,5 +56,13 @@ export class HeaderComponent {
     if (route === 'administration') {
       return (this.jwt && this.jwt.scopes.find(x => x === 'sysadmin') && this.jwt.username === 'admin');
     }
+  }
+
+  toggleNav() {
+    this.isNavMenuOpen = !this.isNavMenuOpen;
+  }
+
+  closeNav() {
+    this.isNavMenuOpen = false;
   }
 }
