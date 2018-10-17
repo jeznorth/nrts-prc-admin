@@ -29,13 +29,13 @@ class SortKey {
 })
 
 export class ReviewCommentsComponent implements OnInit, OnDestroy {
-  readonly PAGE_SIZE = 10;
+  readonly PAGE_SIZE = 20;
 
   readonly sortKeys: Array<SortKey> = [
-    { innerHTML: '&uarr; Date', value: '%2BdateAdded' },
-    { innerHTML: '&darr; Date', value: '-dateAdded' },
-    { innerHTML: '&uarr; Name', value: '%2BcontactName' },
-    { innerHTML: '&darr; Name', value: '-contactName' },
+    { innerHTML: 'Oldest', value: '%2BdateAdded' },
+    { innerHTML: 'Newest', value: '-dateAdded' },
+    { innerHTML: 'Name (A-Z)', value: '%2BcontactName' },
+    { innerHTML: 'Name (Z-A)', value: '-contactName' },
     // PRC-272: temporarily removed
     // { innerHTML: '&uarr; Status', value: '%2BcommentStatus' },
     // { innerHTML: '&darr; Status', value: '-commentStatus' },

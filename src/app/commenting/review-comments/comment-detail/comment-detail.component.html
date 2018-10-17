@@ -2,7 +2,51 @@
   <em>No comment selected.</em>
 </div>
 
-<div *ngIf="comment">
+<div class="comment-detail-container">
+  <div class="title-container__title">
+    <h2>{{comment.commentAuthor.contactName}} ({{comment.commentAuthor.orgName}})</h2>
+    <div class="comment-date">
+      {{comment.dateAdded | date:'medium'}}
+    </div>
+  </div>
+  <div class="comment-meta">
+    <div>
+      <a href="mailto:{{comment.commentAuthor.internal.phone}}">{{comment.commentAuthor.internal.email}}</a>
+    </div>
+    <div>
+      {{comment.commentAuthor.location}}
+    </div>
+    <div>
+      {{comment.commentAuthor.internal.phone}}
+    </div>
+  </div>
+  <div class="comment-body" [innerHTML]="comment.comment | newlines"></div>
+  <div class="comment-attachments">
+    <ul class="doc-list">
+      <li *ngFor="let document of documents">
+        <div class="cell icon">
+          <i class="material-icons link" 
+            (click)="api.openDocument(document)">
+            insert_drive_file
+          </i>
+        </div>
+        <div class="cell name">
+          <span class="cell__txt-content">
+            <a (click)="api.openDocument(document)">{{document.documentFileName}}</a>
+          </span>
+        </div>
+        <div class="cell actions">
+          <button class="btn btn-icon" type="button" title="Download this document" 
+            (click)="api.downloadDocument(document)">
+            <i class="material-icons">file_download</i>
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div *ngIf="comment" style="display: none;">
   <div class="comment-detail">
     <div class="row">
       <div class="col-6 comment-detail__meta">

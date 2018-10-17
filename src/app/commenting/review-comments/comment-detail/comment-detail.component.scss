@@ -1,5 +1,39 @@
 @import "assets/styles/base/base.scss";
 
+.comment-detail-container {
+    padding: 1.65rem 2rem;
+}
+
+.title-container__title {
+    @include flex-box();
+
+    h2 {
+        @include flex(1 1 auto);
+        margin-bottom: 0;
+        letter-spacing: -0.02rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+    }
+}
+
+.comment-meta {
+    margin-top: 1.15rem;
+    font-size: 90%;
+}
+
+.comment-body {
+    margin-top: 1.25rem;
+}
+
+.comment-attachments {
+    margin-top: 2rem;
+}
+
+.comment-date {
+    color: #999;
+    font-size: 90%;
+}
+
 .comment-detail {
     background-color: #f7f7f7;
     border: darkgray 1px solid;

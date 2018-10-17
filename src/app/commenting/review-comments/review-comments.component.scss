@@ -1,5 +1,152 @@
 @import "assets/styles/base/base.scss";
 
+:host {
+  @include flex-box();
+  @include flex-direction(column);
+  @include flex(1 1 auto);
+  overflow: hidden;
+}
+
+.top-container {
+  padding-right: 0;
+}
+
+.bottom-container {
+  @include flex-box();
+  overflow: hidden;
+
+  .container {
+    @include flex-box();
+    padding-bottom: 1.5rem;
+  }
+}
+
+.pane {
+  @include flex-box();
+  @include flex-direction(column);
+}
+
+.pane-header {
+  @include flex-box();
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+
+  h2 {
+    @include flex(1 1 auto);
+    margin-top: 0.65rem;
+    font-size: 1.25rem;
+    white-space: nowrap;
+  }
+
+  .form-control {
+    width: 8rem;
+  }
+}
+
+.pane-scroll {
+  @include flex( 1 1 auto);
+  overflow-y: auto;
+}
+
+.pane-footer {
+  @include flex(0 0 auto);
+  padding: 1rem;
+  background: #f7f8fa;
+}
+
+.review-comments {
+  @include flex-box();
+  flex: 1 1 auto;
+  margin: 0 auto;
+  background: #fff;
+  box-shadow: 0.02rem 0 0.2rem rgba(0, 0, 0, 0.15);
+}
+
+// Comment Layout
+.comment-list {
+  @include flex(0 0 auto);
+  width: 20rem;
+  border-right: 1px solid #eee;
+}
+
+.comment-review {
+  @include flex(1 1 auto);
+}
+
+.sort-by-input {
+  .input-group-text,
+  .form-control {
+    font-size: 0.875rem;
+  }
+}
+
+h2 {
+  margin-bottom: 0;
+  letter-spacing: -0.02rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+// Comment Item
+.comment-item {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid #eee;
+  font-size: 0.875rem;
+  transition: all ease-out 0.2s;
+
+  &:after {
+    content: ' ';
+    position: absolute;
+    top: -1px;
+    bottom: 0;
+    left: 0;
+    width: 0.25rem;
+    background-color: transparent;
+    transition: all ease-out 0.2s;
+  }
+}
+
+.comment-item.active {
+  background: #f7f8fa;
+
+  &:after {
+    background-color: #007bff;
+  }
+}
+
+.comment-item:hover {
+  background: #f7f8fa;
+}
+
+.comment-item-header {
+  @include flex-box();
+}
+
+.comment-author {
+  @include flex(1 1 auto);
+  white-space: nowrap;
+  font-size: 0.875rem;
+  font-weight: 700;
+}
+
+.comment-date {
+  color: #999;
+  font-size: 85%;
+}
+
+.comment-body {
+  @include flex(1 1 auto);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.comment-date {
+  @include flex(0 0 auto);
+  white-space: nowrap;
+}
+
 .review-comments {
     .title-container {
         height: 50px; // to match app details/edit pages
